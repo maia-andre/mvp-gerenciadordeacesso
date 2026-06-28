@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAU · Gestor de Acesso Unificado — Prefeitura de São José dos Campos</title>
+  <meta name="description" content="Protótipo do sistema único de gestão de acessos da Prefeitura de São José dos Campos. Substitui as solicitações em papel/PDF e cria rastro de cada decisão." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Faixa de protótipo -->
+  <div class="proto-flag" role="note">
+    <span class="proto-flag__full">Protótipo de demonstração · dados fictícios · nenhuma informação é salva</span>
+    <span class="proto-flag__short">Protótipo · dados fictícios</span>
+  </div>
+
+  <div class="app">
+    <!-- ===================== NAVEGAÇÃO LATERAL ===================== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3D8BFF" />
+                <stop offset="1" stop-color="#1FA46A" />
+              </linearGradient>
+            </defs>
+            <path d="M20 2 L35 9 V21 C35 30 28 36 20 38 C12 36 5 30 5 21 V9 Z" fill="none" stroke="url(#g)" stroke-width="2.2"/>
+            <circle cx="20" cy="19" r="3.4" fill="url(#g)"/>
+            <path d="M8 19 a12 12 0 0 1 24 0" fill="none" stroke="url(#g)" stroke-width="1.4" opacity="0.55"/>
+            <path d="M11.5 19 a8.5 8.5 0 0 1 17 0" fill="none" stroke="url(#g)" stroke-width="1.4" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="brand__text">
+          <strong>GAU</strong>
+          <span>Gestor de Acesso Unificado</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav__item is-active" data-view="dashboard">
+          <span class="nav__ic">◧</span> Visão geral
+        </button>
+        <button class="nav__item" data-view="solicitacoes">
+          <span class="nav__ic">⇄</span> Solicitações
+          <span class="nav__badge" id="navBadge">0</span>
+        </button>
+        <button class="nav__item" data-view="nova">
+          <span class="nav__ic">＋</span> Nova solicitação
+        </button>
+        <button class="nav__item" data-view="sistemas">
+          <span class="nav__ic">▦</span> Sistemas
+        </button>
+        <button class="nav__item" data-view="servidores">
+          <span class="nav__ic">☻</span> Servidores
+        </button>
+        <button class="nav__item" data-view="secretarias">
+          <span class="nav__ic">⬡</span> Secretarias
+        </button>
+        <button class="nav__item" data-view="trilha">
+          <span class="nav__ic">≣</span> Trilha de auditoria
+        </button>
+      </nav>
+
+      <div class="sidebar__foot">
+        <div class="orgmark">Prefeitura de</div>
+        <div class="orgmark orgmark--strong">São José dos Campos</div>
+      </div>
+    </aside>
+
+    <!-- ===================== ÁREA PRINCIPAL ===================== -->
+    <div class="main">
+      <header class="topbar">
+        <button class="topbar__menu" id="menuBtn" aria-label="Abrir menu">≡</button>
+        <div class="topbar__title">
+          <h1 id="viewTitle">Visão geral</h1>
+          <p id="viewSub">Acompanhe os acessos da sua secretaria em um só lugar.</p>
+        </div>
+        <div class="who">
+          <div class="who__txt">
+            <strong id="whoName">Helena Marques</strong>
+            <span id="whoRole">Administradora · SGAF</span>
+          </div>
+          <div class="who__av" id="whoAv">HM</div>
+        </div>
+      </header>
+
+      <main class="content" id="content"><!-- preenchido via JS --></main>
+    </div>
+  </div>
+
+  <!-- ===================== GAVETA DE DETALHE ===================== -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__scrim" data-close></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <button class="drawer__x" data-close aria-label="Fechar">✕</button>
+      <div id="drawerBody"><!-- preenchido via JS --></div>
+    </aside>
+  </div>
+
+  <!-- ===================== AVISOS ===================== -->
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
